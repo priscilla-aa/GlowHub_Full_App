@@ -1,7 +1,7 @@
 /<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>GlowHub | Beauty Marketplace</title>
 <style>
 :root{--pink:#e91583;--pink2:#ff8bc5;--pale:#fff0f7;--ink:#281724;--muted:#927e8b;--line:#f2d9e7;--white:#fff}
@@ -170,6 +170,138 @@ body:not(.home-screen) .legacy-header{display:flex;width:100%;align-items:center
 .notify-count[hidden]{display:none}
 .legacy-notify{position:relative;display:inline-grid;width:40px;height:40px;padding:0;place-items:center}.legacy-notify svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 @media(max-width:700px){.home-promo-secondary{align-items:flex-start;flex-direction:column}}
+</style>
+<style>
+@media(max-width:700px){
+	body:not(.home-screen)>header{padding:calc(9px + env(safe-area-inset-top)) 12px 9px}
+	body.home-screen>header{padding-top:calc(9px + env(safe-area-inset-top))}
+	.legacy-header{gap:6px}
+	.legacy-header>.brand{flex:none;font-size:19px}
+	.legacy-header>div:last-child{display:flex;min-width:0;align-items:center;gap:4px;white-space:nowrap}
+	.legacy-header .headbtn{min-height:40px;padding:8px 9px;font-size:12px}
+	main{width:100%;min-width:0;padding:14px 14px calc(88px + env(safe-area-inset-bottom))}
+	.home-main{padding:8px 14px calc(88px + env(safe-area-inset-bottom))}
+	.panel,.home-store-section,.shop-list-heading{scroll-margin-top:calc(62px + env(safe-area-inset-top))}
+	.home-promo{grid-template-columns:minmax(0,1.35fr) minmax(88px,.65fr);gap:10px;padding:16px;border-radius:18px}
+	.home-promo h2{font-size:clamp(21px,6.3vw,26px);line-height:1.12}
+	.home-promo p{margin:8px 0 12px;font-size:12px;line-height:1.4}
+	.home-promo .btn{min-height:42px;padding:10px 12px;font-size:13px}
+	.home-promo-art{min-height:112px;max-height:132px}
+	.home-promo-art img{max-height:130px}
+	.home-promo-secondary{width:100%;padding:14px}
+	.home-promo-secondary .btn{width:100%;min-height:44px}
+	.home-section-heading{align-items:flex-start;gap:8px}
+	.home-section-heading h2{font-size:18px;line-height:1.25}
+	.home-product-track{grid-auto-columns:minmax(150px,44vw);gap:10px}
+	.home-product-name{font-size:14px;line-height:1.4}
+	.home-product-price{font-size:16px}
+	.home-product-art img{object-fit:contain}
+	.home-category-grid{gap:9px}
+	.home-category-card{min-height:132px;padding:10px}
+	.home-category-name{font-size:12px;line-height:1.35}
+	.home-category-art{height:76px}
+	.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+	.product{display:flex;min-width:0;flex-direction:column}
+	.p-art{height:auto;aspect-ratio:1/1;flex:none}
+	.p-art img{object-fit:contain;padding:8px}
+	.p-info{display:flex;min-width:0;flex:1;flex-direction:column;padding:10px}
+	.p-info h3{display:-webkit-box;min-height:2.7em;overflow:hidden;font-size:14px;line-height:1.35;-webkit-box-orient:vertical;-webkit-line-clamp:2}
+	.p-info>p{line-height:1.4;overflow-wrap:anywhere}
+	.pfoot{margin-top:auto;padding-top:5px}
+	.pfoot .price-line{min-width:0;flex-wrap:wrap;gap:4px}
+	.price{font-size:15px}
+	.pfoot .add,.list-art .add{width:40px;height:40px;flex:none}
+	.heart,.home-product-heart{width:38px;height:38px}
+	.panel{min-width:0;margin:14px 0;padding:16px;border-radius:17px}
+	.panel h2{font-size:21px;line-height:1.25;overflow-wrap:anywhere}
+	.panel .sectionhead,.shop-detail-head{flex-wrap:wrap;gap:10px}
+	.panel .sectionhead h2{font-size:18px}
+	.btn{min-height:44px;padding:11px 14px}
+	.shop-map-search{align-items:stretch}
+	.shop-map-search input{min-width:0;font-size:16px}
+	.shop-map-search .btn{min-height:44px;padding:10px 13px}
+	.shop{min-width:0;padding:14px}
+	.shop .btn{min-height:42px;padding:9px 11px}
+	.panel.show.product-detail{width:100%;margin:14px auto}
+	.detail-layout{grid-template-columns:minmax(0,1fr);gap:16px}
+	.detail-image{width:100%;height:clamp(200px,62vw,270px);min-height:200px}
+	.detail-image img{object-fit:contain;padding:12px}
+	.detail-info{min-width:0}
+	.detail-info h2{font-size:22px;line-height:1.25;overflow-wrap:anywhere}
+	.detail-actions{gap:8px}
+	.detail-actions .btn{min-width:min(100%,140px);min-height:46px}
+	#cartPanel .cartline{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
+	#cartPanel .cartline>div:first-child{grid-column:1;grid-row:1 / span 3;min-width:0;overflow-wrap:anywhere}
+	#cartPanel .cartline>div:first-child img,#wishlistPanel .cartline>div:first-child img{width:48px;height:48px;object-fit:contain;margin-right:7px;border-radius:10px;background:#fff6fa;vertical-align:middle}
+	#cartPanel .cartline>.qty{grid-column:2;grid-row:1;justify-self:end;white-space:nowrap}
+	#cartPanel .cartline> b{grid-column:2;grid-row:2;justify-self:end;white-space:nowrap}
+	#cartPanel .cartline>.btn{grid-column:2;grid-row:3;justify-self:end;min-height:40px;padding:8px 10px}
+	#cartPanel>button.btn,#checkoutPanel>button.btn,#wishlistPanel>button.btn{width:100%;margin:7px 0 0}
+	#cartTotal{font-size:17px}
+	#checkoutPanel .field input,#checkoutPanel .field select,#profilePanel .field input,.home-product-search input{min-width:0;font-size:16px}
+	#checkoutPanel>button.btn{min-height:48px}
+	#wishlistPanel .cartline{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+	#wishlistPanel .cartline>div:first-child{min-width:0;overflow-wrap:anywhere}
+	#wishlistPanel .seller-product-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+	#wishlistPanel .seller-product-actions .btn{min-height:42px;padding:8px}
+	.anita-shop-view{width:100%;padding:0 14px 32px}
+	.anita-shop-view .anita-page-header{gap:8px;padding:12px 0 15px}
+	.anita-shop-view .anita-page-header .icon-btn{flex-basis:40px;width:40px;height:40px}
+	.anita-shop-view .anita-page-title{font-size:clamp(19px,5.5vw,24px);overflow-wrap:anywhere}
+	.anita-shop-view .anita-info-intro{padding:15px 0 18px}
+	.anita-shop-view .anita-info-intro p{font-size:14px}
+	.anita-shop-view .anita-info-intro .anita-whatsapp-link{min-height:44px}
+	.anita-shop-view .anita-info-row{grid-template-columns:26px minmax(0,1fr);gap:10px;padding:15px 0}
+	.anita-shop-view .anita-info-copy{min-width:0;overflow-wrap:anywhere}
+	.anita-shop-view .anita-map iframe{height:205px}
+	.anita-shop-view .anita-map-label{right:calc(50% + 37px);max-width:calc(50% - 44px);font-size:11px}
+	.anita-shop-view .popular-track{grid-auto-columns:minmax(170px,76vw)}
+	.anita-shop-view .popular-track .p-art{height:clamp(150px,48vw,190px);aspect-ratio:auto}
+	.anita-shop-view .popular-track .p-art img{object-fit:contain}
+	.anita-shop-view .list-product{grid-template-columns:minmax(0,1fr) minmax(76px,25vw);gap:10px;padding:13px 0}
+	.anita-shop-view .list-copy h3{font-size:14px;line-height:1.35;overflow-wrap:anywhere}
+	.anita-shop-view .list-copy .price-line{font-size:15px}
+	.anita-shop-view .list-art{width:100%;height:94px;border-radius:13px}
+	.anita-shop-view .list-art img{object-fit:contain;padding:6px}
+	.anita-shop-view .catalog-controls{padding:10px}
+	.anita-shop-view .filter-field input,.anita-shop-view .filter-field select{min-width:0;font-size:16px}
+	.anita-shop-view .carousel-next{min-height:40px;padding:7px 10px;font-size:12px}
+	.seller-grid{grid-template-columns:minmax(0,1fr)}
+	.seller-toolbar label{min-width:0}
+	.seller-toolbar select,.seller-form input,.seller-form select,.seller-form textarea,.chat-form textarea{min-width:0;font-size:16px}
+	.seller-form .btn,.chat-form .btn,.preferences-form>.btn{width:100%;min-height:46px}
+	.seller-product-item{flex-wrap:wrap}
+	.seller-product-actions button{min-height:40px}
+	.map-layout{grid-template-columns:minmax(0,1fr)}
+	.map-frame{width:100%;height:230px}
+	.map-shop-list,.notification-list,.order-list,.chat-list,.seller-product-list{min-width:0}
+	.notification-item,.review-item,.order-item,.seller-product-item,.chat-message,.compare-item{overflow-wrap:anywhere}
+	.share-app-dialog{max-height:calc(100dvh - 32px);overflow-y:auto;padding:17px}
+	.share-app-options{grid-template-columns:repeat(2,minmax(0,1fr))}
+	.bottom{padding-right:7px;padding-left:7px}
+	.bottom button{min-height:52px}
+	.bottom button.active{border-radius:12px;background:#fff0f7}
+}
+@media(max-width:380px){
+	body:not(.home-screen)>header{padding-right:8px;padding-left:8px}
+	.legacy-header>.brand{font-size:17px}
+	.legacy-header .headbtn{padding:7px;font-size:11px}
+	main{padding-right:11px;padding-left:11px}
+	.home-main{padding-right:11px;padding-left:11px}
+	.home-promo{grid-template-columns:minmax(0,1.25fr) minmax(78px,.65fr);gap:8px;padding:13px}
+	.home-promo h2{font-size:21px}
+	.home-category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+	.home-category-card{min-height:126px}
+	.grid{gap:8px}
+	.p-info{padding:8px}
+	.anita-shop-view{padding-right:11px;padding-left:11px}
+	.anita-shop-view .anita-page-header .icon-btn{flex-basis:36px;width:36px;height:36px}
+	.anita-shop-view .anita-page-title{font-size:19px}
+	.anita-shop-view .list-product{grid-template-columns:minmax(0,1fr) 76px}
+	.anita-shop-view .list-art{height:84px}
+	.bottom{padding-right:4px;padding-left:4px}
+	.bottom button .nav-label{font-size:10px}
+}
 </style>
 </head>
 <body>
